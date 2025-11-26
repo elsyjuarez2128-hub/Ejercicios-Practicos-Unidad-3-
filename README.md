@@ -12,3 +12,8 @@
 | `PruebaArbol.java` | Clase principal | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/PruebaArbol.java)|
 | `ArbolBinario.java` | Clase Árbol Binario | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/ArbolBinario.java)|
 | `NodoArbol.java` | Clase Nodo | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/NodoArbol) |
+
+# Actividad 2 Ejercicios Practicos Arbol Binario realizado en el aula 
+| Archivo | Descripción | Enlace |
+|---------|-------------|--------|
+| Arbol Binario | Guiados | [Ver documento](https://github.com/elsyjuarez2128-hub/Unidad-3/blob/main/Ejercicios%20Guiados%20de%20Arbol%20Binario.pdf)|
