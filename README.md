@@ -7,8 +7,8 @@
 
 # Ejercicios Practicos 
 # Actividad 2 ArbolBinario 
-| Archivo | Descripción | Código |
-|--------|-------------|--------|
-| `Main.java` | Clase principal que ejecuta el árbol binario | [Ver Codigo]|
-| `ArbolBinario.java` | Implementación del árbol binario |[Ver Codigo]|
-| `NodoArbol.java` | Clase nodo del árbol |[Ver Codigo]|
+| Archivo | Descripción | Enlace |
+|---------|-------------|--------|
+| `Main.java` | Clase principal | [Ver código](https://github.com/TU_USUARIO/TU_REPOSITORIO/ruta/Main.java) |
+| `ArbolBinario.java` | Clase Árbol Binario | [Ver código](https://github.com/TU_USUARIO/TU_REPOSITORIO/ruta/ArbolBinario.java) |
+| `NodoArbol.java` | Clase Nodo | [Ver código](https://github.com/TU_USUARIO/TU_REPOSITORIO/ruta/NodoArbol.java) |
