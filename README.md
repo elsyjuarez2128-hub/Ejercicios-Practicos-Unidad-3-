@@ -9,6 +9,6 @@
 # Actividad 2 ArbolBinario 
 | Archivo | Descripción | Enlace |
 |---------|-------------|--------|
-| `Main.java` | Clase principal | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/NodoArbol)|
-| `ArbolBinario.java` | Clase Árbol Binario | [Ver código](https://github.com/TU_USUARIO/TU_REPOSITORIO/ruta/ArbolBinario.java) |
-| `NodoArbol.java` | Clase Nodo | [Ver código](https://github.com/TU_USUARIO/TU_REPOSITORIO/ruta/NodoArbol.java) |
+| `Main.java` | Clase principal | [Ver código]|
+| `ArbolBinario.java` | Clase Árbol Binario | [Ver código]|
+| `NodoArbol.java` | Clase Nodo | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/NodoArbol) |
