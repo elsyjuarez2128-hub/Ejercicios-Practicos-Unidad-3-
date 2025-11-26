@@ -1,0 +1,40 @@
+package Com.company.ArbolBinario;
+/**
+ *
+ * @author Elsy Joselyn Godinez Juarez
+ * Ejercicios Practicos Unidad 3
+ * GTID141
+ * Tema: Arbol Binario
+ */
+public class NodoArbol {
+    
+    // Atributos (Encapsulados)
+   
+    private int dato;                 
+    public NodoArbol hijoIzquierdo;  
+    public NodoArbol hijoDerecho;   
+
+    
+    // Constructor
+   
+    public NodoArbol(int valor) {
+        this.dato = valor;
+        this.hijoIzquierdo = null;
+        this.hijoDerecho = null;
+    }
+
+  
+    // Métodos Getters y Setters
+  
+
+    // Obtener el dato del nodo
+    public int getDato() {
+        return dato;
+    }
+
+    // Modificar el dato (opcional)
+    public void setDato(int nuevoDato) {
+        this.dato = nuevoDato;
+    }
+}
+
