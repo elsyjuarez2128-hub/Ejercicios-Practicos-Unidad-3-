@@ -1,0 +1,33 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.domsimulador;
+
+/**
+ *
+ * @author Elsy Joselyn Godinez Juarez 
+ * GTID141
+ * Tema:
+ */
+
+import javax.swing.*;
+
+/**
+ * Clase principal que inicia la aplicación del Simulador DOM
+ */
+
+
+import javax.swing.*;
+
+/**
+ * Clase principal que inicia la aplicación del Simulador DOM
+ */
+public class DOMSimulador {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            // Sin cambiar el look and feel para evitar problemas
+            new DOMSimulatorGUI().setVisible(true);
+        });
+    }
+}
