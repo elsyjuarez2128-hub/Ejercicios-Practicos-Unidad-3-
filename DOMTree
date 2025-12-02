@@ -1,0 +1,105 @@
+package com.mycompany.domsimulador;
+
+/**
+ *
+ * @author Elsy Joselyn Godinez Juarez 
+ * GTID141
+ * Tema: Ejercicios Practicos con Swing 
+ */
+
+/**
+ * Clase que representa el árbol DOM completo
+ * Maneja la estructura jerárquica y generación de HTML
+ */
+
+
+import javax.swing.tree.DefaultMutableTreeNode;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Maneja la estructura de árbol del DOM y generación de HTML
+ */
+public class DOMTree {
+    private DefaultMutableTreeNode root;
+    private Map<String, String> validTags;
+    
+    public DOMTree() {
+        this.root = new DefaultMutableTreeNode(new DOMNode("html"));
+        initializeValidTags();
+    }
+    
+    private void initializeValidTags() {
+        validTags = new HashMap<>();
+        validTags.put("html", "</html>");
+        validTags.put("head", "</head>");
+        validTags.put("body", "</body>");
+        validTags.put("div", "</div>");
+        validTags.put("p", "</p>");
+        validTags.put("h1", "</h1>");
+        validTags.put("h2", "</h2>");
+        validTags.put("h3", "</h3>");
+        validTags.put("ul", "</ul>");
+        validTags.put("li", "</li>");
+        validTags.put("a", "</a>");
+        validTags.put("img", "");
+        validTags.put("span", "</span>");
+        validTags.put("b", "</b>");
+        validTags.put("i", "</i>");
+        validTags.put("br", "");
+        validTags.put("n1", "</n1>");
+        validTags.put("boder", "</boder>");
+    }
+    
+    public DefaultMutableTreeNode getRoot() {
+        return root;
+    }
+    
+    public boolean isValidTag(String tag) {
+        return validTags.containsKey(tag.toLowerCase());
+    }
+    
+    public String getClosingTag(String tag) {
+        return validTags.getOrDefault(tag.toLowerCase(), "</" + tag + ">");
+    }
+    
+    public String generateHTML() {
+        StringBuilder htmlBuilder = new StringBuilder();
+        generateHTML(root, htmlBuilder, 0);
+        return htmlBuilder.toString();
+    }
+    
+    private void generateHTML(DefaultMutableTreeNode node, StringBuilder htmlBuilder, int depth) {
+        String indent = "  ".repeat(depth);
+        DOMNode domNode = (DOMNode) node.getUserObject();
+        String tag = domNode.getTag();
+        String content = domNode.getContent();
+        String closingTag = getClosingTag(tag);
+        
+        if (closingTag.isEmpty()) {
+            // Etiqueta auto-cerrada
+            htmlBuilder.append(indent).append("<").append(tag);
+            if (!content.isEmpty()) {
+                htmlBuilder.append(" alt=\"").append(content).append("\"");
+            }
+            htmlBuilder.append(">\n");
+        } else {
+            // Etiqueta con contenido
+            htmlBuilder.append(indent).append("<").append(tag).append(">");
+            if (!content.isEmpty()) {
+                htmlBuilder.append(content);
+            }
+            
+            if (node.getChildCount() > 0) {
+                htmlBuilder.append("\n");
+                for (int i = 0; i < node.getChildCount(); i++) {
+                    DefaultMutableTreeNode child = (DefaultMutableTreeNode) node.getChildAt(i);
+                    generateHTML(child, htmlBuilder, depth + 1);
+                }
+                htmlBuilder.append(indent);
+            }
+            
+            htmlBuilder.append(closingTag).append("\n");
+        }
+    }
+}
