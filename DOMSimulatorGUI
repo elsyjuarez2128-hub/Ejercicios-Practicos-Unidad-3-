@@ -1,0 +1,238 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.domsimulador;
+
+/**
+ *
+ * @author Elsy Joselyn Godinez Juarez
+ * GTID141
+ * Ejercicios Practicos 
+ */
+
+import javax.swing.*;
+import javax.swing.tree.*;
+import java.awt.*;
+import java.awt.event.*;
+
+/**
+ * Interfaz gráfica principal del Simulador DOM
+ */
+public class DOMSimulatorGUI extends JFrame {
+    private DOMTree domTree;
+    private JTree visualTree;
+    private DefaultTreeModel treeModel;
+    private JTextArea htmlPreview;
+    private JTextField contentField;
+    private JButton addButton, removeButton;
+    private JComboBox<String> tagComboBox;
+    
+    public DOMSimulatorGUI() {
+        domTree = new DOMTree();
+        initializeUI();
+        setupEventListeners();
+    }
+    
+    private void initializeUI() {
+        setTitle("Simulador DOM - Creador de Páginas Web");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout(10, 10));
+        
+        // Panel principal dividido
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        splitPane.setDividerLocation(400);
+        
+        // Panel izquierdo - Árbol DOM
+        JPanel leftPanel = new JPanel(new BorderLayout());
+        leftPanel.setBorder(BorderFactory.createTitledBorder("Árbol DOM"));
+        
+        // Crear árbol visual
+        treeModel = new DefaultTreeModel(domTree.getRoot());
+        visualTree = new JTree(treeModel);
+        visualTree.setCellRenderer(new DOMTreeRenderer());
+        
+        JScrollPane treeScroll = new JScrollPane(visualTree);
+        leftPanel.add(treeScroll, BorderLayout.CENTER);
+        
+        // Panel de controles
+        JPanel controlPanel = createControlPanel();
+        leftPanel.add(controlPanel, BorderLayout.SOUTH);
+        
+        // Panel derecho - Vista HTML
+        JPanel rightPanel = new JPanel(new BorderLayout());
+        rightPanel.setBorder(BorderFactory.createTitledBorder("Vista HTML en Vivo"));
+        
+        htmlPreview = new JTextArea();
+        htmlPreview.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        htmlPreview.setEditable(false);
+        htmlPreview.setBackground(new Color(240, 240, 240));
+        
+        JScrollPane htmlScroll = new JScrollPane(htmlPreview);
+        rightPanel.add(htmlScroll, BorderLayout.CENTER);
+        
+        splitPane.setLeftComponent(leftPanel);
+        splitPane.setRightComponent(rightPanel);
+        
+        add(splitPane, BorderLayout.CENTER);
+        
+        // Barra de estado
+        JLabel statusBar = new JLabel(" Listo - Simulador DOM Activo");
+        statusBar.setBorder(BorderFactory.createLoweredBevelBorder());
+        add(statusBar, BorderLayout.SOUTH);
+        
+        setSize(900, 600);
+        setLocationRelativeTo(null);
+        
+        updateHTMLView();
+    }
+    
+    private JPanel createControlPanel() {
+        JPanel panel = new JPanel(new GridLayout(2, 1, 5, 5));
+        panel.setBorder(BorderFactory.createTitledBorder("Controles"));
+        
+        // Panel superior - Campos de entrada
+        JPanel inputPanel = new JPanel(new GridLayout(2, 2, 5, 5));
+        
+        inputPanel.add(new JLabel("Etiqueta:"));
+        tagComboBox = new JComboBox<>(new String[]{
+            "html", "head", "body", "div", "p", "h1", "h2", "h3", 
+            "ul", "li", "a", "img", "span", "b", "i", "br", "n1", "boder"
+        });
+        tagComboBox.setEditable(true);
+        inputPanel.add(tagComboBox);
+        
+        inputPanel.add(new JLabel("Texto:"));
+        contentField = new JTextField();
+        inputPanel.add(contentField);
+        
+        // Panel inferior - Botones
+        JPanel buttonPanel = new JPanel(new FlowLayout());
+        addButton = new JButton("Agregar Nodo");
+        removeButton = new JButton("Eliminar Nodo");
+        
+        buttonPanel.add(addButton);
+        buttonPanel.add(removeButton);
+        
+        panel.add(inputPanel);
+        panel.add(buttonPanel);
+        
+        return panel;
+    }
+    
+    private void setupEventListeners() {
+        addButton.addActionListener(e -> addNode());
+        removeButton.addActionListener(e -> removeNode());
+        
+        // Doble clic para editar
+        visualTree.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    editNode();
+                }
+            }
+        });
+    }
+    
+    private void addNode() {
+        String tag = tagComboBox.getSelectedItem().toString().trim();
+        String text = contentField.getText().trim();
+        
+        if (tag.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "La etiqueta no puede estar vacía", 
+                "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        DefaultMutableTreeNode parentNode;
+        TreePath selectedPath = visualTree.getSelectionPath();
+        
+        if (selectedPath == null) {
+            parentNode = domTree.getRoot();
+        } else {
+            parentNode = (DefaultMutableTreeNode) selectedPath.getLastPathComponent();
+        }
+        
+        DOMNode newNodeData = new DOMNode(tag, text);
+        DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newNodeData);
+        
+        treeModel.insertNodeInto(newNode, parentNode, parentNode.getChildCount());
+        visualTree.expandPath(new TreePath(parentNode.getPath()));
+        
+        contentField.setText("");
+        updateHTMLView();
+    }
+    
+    private void removeNode() {
+        TreePath selectedPath = visualTree.getSelectionPath();
+        if (selectedPath == null) {
+            JOptionPane.showMessageDialog(this, "Seleccione un nodo para eliminar", 
+                "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) selectedPath.getLastPathComponent();
+        
+        if (selectedNode.equals(domTree.getRoot())) {
+            JOptionPane.showMessageDialog(this, "No se puede eliminar el nodo raíz", 
+                "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        int confirm = JOptionPane.showConfirmDialog(this, 
+            "¿Está seguro de eliminar este nodo?", "Confirmar eliminación", 
+            JOptionPane.YES_NO_OPTION);
+        
+        if (confirm == JOptionPane.YES_OPTION) {
+            treeModel.removeNodeFromParent(selectedNode);
+            updateHTMLView();
+        }
+    }
+    
+    private void editNode() {
+        TreePath selectedPath = visualTree.getSelectionPath();
+        if (selectedPath == null) return;
+        
+        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) selectedPath.getLastPathComponent();
+        DOMNode nodeData = (DOMNode) selectedNode.getUserObject();
+        
+        String newContent = JOptionPane.showInputDialog(this, 
+            "Editar contenido del nodo:", nodeData.getContent());
+        
+        if (newContent != null) {
+            nodeData.setContent(newContent.trim());
+            treeModel.nodeChanged(selectedNode);
+            updateHTMLView();
+        }
+    }
+    
+    private void updateHTMLView() {
+        htmlPreview.setText(domTree.generateHTML());
+    }
+    
+    // Renderer personalizado para el árbol
+    private class DOMTreeRenderer extends DefaultTreeCellRenderer {
+        @Override
+        public Component getTreeCellRendererComponent(JTree tree, Object value, 
+                boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
+            super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
+            
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
+            DOMNode domNode = (DOMNode) node.getUserObject();
+            String text = domNode.toString();
+            
+            // Iconos diferentes según el tipo de nodo
+            if (text.startsWith("html")) {
+                setIcon(UIManager.getIcon("FileView.computerIcon"));
+            } else if (text.startsWith("h1") || text.startsWith("h2") || text.startsWith("h3")) {
+                setIcon(UIManager.getIcon("FileView.directoryIcon"));
+            } else if (text.contains(":")) {
+                setIcon(UIManager.getIcon("FileView.fileIcon"));
+            } else {
+                setIcon(UIManager.getIcon("Tree.leafIcon"));
+            }
+            
+            return this;
+        }
+    }
+}
