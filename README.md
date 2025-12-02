@@ -20,6 +20,7 @@
 | Arbol Binario | Practicos  | [Ver documento](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/Arbol%20Binario%20Unidad%203%20.pdf)|
 
  # Actividad 3 Ejercios Practicos con Swing
+ # Ejercicio 1 
 | Archivo | Descripción | Enlace |
 |---------|-------------|--------|
 | `DOMNode.java` | Clase principal | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/PruebaArbol.java)|
