@@ -31,7 +31,7 @@
 # Ejercico 2 
 | Archivo | Descripción | Enlace |
 |---------|-------------|--------|
-| `ArbolBB.java` | Clase principal | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/DOMNode)|
+| `ArbolBB.java` | Clase principal | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/ArbolBB)|
 | `ArbolGUI.java` | Clase Árbol Binario | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/DOMSimulador)|
 | `DrawingPanel.java` | Clase Nodo | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/DOMSimulatorGUI) |
 | `Nodo` | Clase Nodo | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/DOMTree) |
