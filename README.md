@@ -23,7 +23,7 @@
  # Ejercicio 1 
 | Archivo | Descripción | Enlace |
 |---------|-------------|--------|
-| `DOMNode.java` | Clase principal | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/PruebaArbol.java)|
+| `DOMNode.java` | Clase principal | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/DOMNode)|
 | `DOMSimulador.java` | Clase Árbol Binario | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/ArbolBinario.java)|
 | `DOMSimulatorGUI.java` | Clase Nodo | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/NodoArbol) |
 | `DOMTree.java` | Clase Nodo | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/NodoArbol) |
