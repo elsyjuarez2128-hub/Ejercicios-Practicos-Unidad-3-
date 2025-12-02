@@ -1,0 +1,115 @@
+
+package Abbapp;
+
+/**
+ *
+ * @author Elsy Joselyn Godinez Juarez
+ * GTID141
+ * Ejercicio 2 
+ */
+
+
+public class ArbolBB {
+
+    public Nodo raiz;
+
+    public ArbolBB() {
+        raiz = null;
+    }
+
+    // Insertar un nodo en ABB
+    public void insertar(int valor) {
+        raiz = insertarRec(raiz, valor);
+    }
+
+    private Nodo insertarRec(Nodo nodo, int valor) {
+        if (nodo == null) {
+            return new Nodo(valor);
+        }
+
+        if (valor < nodo.valor) {
+            nodo.izquierdo = insertarRec(nodo.izquierdo, valor);
+        } else if (valor > nodo.valor) {
+            nodo.derecho = insertarRec(nodo.derecho, valor);
+        }
+        return nodo; // No se permiten duplicados
+    }
+
+    // Buscar un valor
+    public boolean buscar(int valor) {
+        return buscarRec(raiz, valor);
+    }
+
+    private boolean buscarRec(Nodo nodo, int valor) {
+        if (nodo == null) return false;
+        if (nodo.valor == valor) return true;
+        if (valor < nodo.valor) return buscarRec(nodo.izquierdo, valor);
+        return buscarRec(nodo.derecho, valor);
+    }
+
+    // Eliminar un nodo
+    public void eliminar(int valor) {
+        raiz = eliminarRec(raiz, valor);
+    }
+
+    private Nodo eliminarRec(Nodo nodo, int valor) {
+        if (nodo == null) return null;
+
+        if (valor < nodo.valor) {
+            nodo.izquierdo = eliminarRec(nodo.izquierdo, valor);
+        } else if (valor > nodo.valor) {
+            nodo.derecho = eliminarRec(nodo.derecho, valor);
+        } else { // encontrado
+
+            // Caso 1 y 2: 0 o 1 hijo
+            if (nodo.izquierdo == null)
+                return nodo.derecho;
+            else if (nodo.derecho == null)
+                return nodo.izquierdo;
+
+            // Caso 3: 2 hijos → tomar sucesor
+            nodo.valor = minValor(nodo.derecho);
+            nodo.derecho = eliminarRec(nodo.derecho, nodo.valor);
+        }
+
+        return nodo;
+    }
+
+    private int minValor(Nodo nodo) {
+        int min = nodo.valor;
+        while (nodo.izquierdo != null) {
+            nodo = nodo.izquierdo;
+            min = nodo.valor;
+        }
+        return min;
+    }
+
+    // Recorridos
+    public String inOrden() {
+        return inOrdenRec(raiz).trim();
+    }
+
+    private String inOrdenRec(Nodo nodo) {
+        if (nodo == null) return "";
+        return inOrdenRec(nodo.izquierdo) + nodo.valor + " " + inOrdenRec(nodo.derecho);
+    }
+
+    public String preOrden() {
+        return preOrdenRec(raiz).trim();
+    }
+
+    private String preOrdenRec(Nodo nodo) {
+        if (nodo == null) return "";
+        return nodo.valor + " " + preOrdenRec(nodo.izquierdo) + preOrdenRec(nodo.derecho);
+    }
+
+    public String postOrden() {
+        return postOrdenRec(raiz).trim();
+    }
+
+    private String postOrdenRec(Nodo nodo) {
+        if (nodo == null) return "";
+        return postOrdenRec(nodo.izquierdo) + postOrdenRec(nodo.derecho) + nodo.valor + " ";
+    }
+}
+
