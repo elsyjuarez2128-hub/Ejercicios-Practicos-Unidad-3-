@@ -1,0 +1,44 @@
+
+package com.mycompany.domsimulador;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author Elsy Joselyn Godinez Juarez 
+ * GTID141
+ * TEMA: Ejercicios Practicos con swing
+ */
+
+
+
+
+/**
+ * Representa un nodo del árbol DOM con etiqueta y contenido
+ */
+public class DOMNode {
+    private String tag;
+    private String content;
+    
+    public DOMNode(String tag, String content) {
+        this.tag = tag;
+        this.content = content;
+    }
+    
+    public DOMNode(String tag) {
+        this(tag, "");
+    }
+    
+    // Getters y Setters
+    public String getTag() { return tag; }
+    public void setTag(String tag) { this.tag = tag; }
+    
+    public String getContent() { return content; }
+    public void setContent(String content) { this.content = content; }
+    
+    @Override
+    public String toString() {
+        return content.isEmpty() ? tag : tag + ": " + content;
+    }
+}
