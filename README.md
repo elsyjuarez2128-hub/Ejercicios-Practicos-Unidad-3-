@@ -39,5 +39,5 @@
 # Ejecicio 3
 | Archivo | Descripción | Enlace |
 |---------|-------------|--------|
-| `ConjuntosApp.java` | Clase principal | [Ver código]|
+| `ConjuntosApp.java` | Clase principal | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/ConjuntosApp.java)|
 | `ConjuntodFrame.java` | Clase Árbol Binario | [Ver código]|
