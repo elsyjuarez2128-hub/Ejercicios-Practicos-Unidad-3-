@@ -41,3 +41,7 @@
 |---------|-------------|--------|
 | `ConjuntosApp.java` | Clase principal | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/ConjuntosApp.java)|
 | `ConjuntodFrame.java` | Clase Árbol Binario | [Ver código](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/ConjuntosFrame.java)|
+
+| Evidencias | Ejercicos Practicos con swing | Ver video |
+|---|---|---|
+| Evidencia | Ejercicos de los ejercicos practicos con swing  | [![Ver video]|
