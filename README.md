@@ -45,4 +45,4 @@
 # Evidencia Ejercicos Practicos con swing
 | Evidencias | Ejercicos Practicos con swing | Ver video |
 |---|---|---|
-| Evidencia | Evidencia de los ejercicos practicos con swing  | [![Ver video]|
+| Evidencia | Evidencia de los ejercicos practicos con swing  | [![Ver video] |
