@@ -46,4 +46,4 @@
 | Evidencias | Ejercicos Practicos con swing | Ver video |
 |---|---|---|
 | Evidencia Ejercicio 1 |SimuladorDOM.java |[Ver video](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/Simulador%20DOM%20-%20Creador%20de%20P%C3%A1ginas%20Web%202025-12-07%2016-49-48.mp4)|
-|Evidencia Ejercicio 2|SimuladorDOM.java |[Ver video]|
+|Evidencia Ejercicio 2|AplicacionConjuntos.java |[Ver video](https://github.com/elsyjuarez2128-hub/Ejercicios-Practicos-Unidad-3-/blob/main/Aplicaci%C3%B3n%20de%20Conjuntos%20-%20Gesti%C3%B3n%20de%20Estudiantes%202025-12-07%2017-13-43%20(1).mp4)|
